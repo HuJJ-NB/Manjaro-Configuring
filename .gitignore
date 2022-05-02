@@ -1,0 +1,9 @@
+*.*
+*
+!README.md
+!*.md
+!*/
+!*.sh
+!*.py
+!*LICENSE
+!.gitignore
