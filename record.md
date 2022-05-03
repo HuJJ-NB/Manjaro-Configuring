@@ -86,45 +86,55 @@
   * 获取常用工具
 
     ``` shell
-    paru -S git vim neovim lsd bat tree wget curl
-    paru -S clang clangd llvm lldb
+    paru -S git vim neovim fd lsd bat ranger ripgrep tree wget curl
+    paru -S clang llvm lldb
+    paru -S python
     paru -S screenkey
     # 一个网络调试工具
     paru -S nmap
     # 磁盘镜像制作工具Ventoy
     paru -S ventoy-bin
-    # 使用方式如下
-    # sudo ventoyweb
+    # 使用方式如：sudo ventoyweb
     # 一个显卡控制管理工具（省电利器）
     paru - S optimus-manager-qt
     # 一个强大的录屏工具
     paru -S simplescreenrecoder
     ```
-    <!--TODO:安装optimus-manager，并查看文档-->
-    <!--TODO:安装simplescreenrecoder、nmap-->
-    <!--TODO:确定clangd、llvm是否要安装-->
-
-  * Python
-
-    <!--TODO:安装pip-->
-    <!--TODO-Manjaro:换源-->
-    ``` shell
-    paru -S python
-    ```
 
   * 科学上网
+    * 下载配置文件
 
-    ``` shell
-    # 安装系统模式依赖
-    # paru -S xxx
-    paru -S clash-for-windows-bin
-    # 添加配置文件
-    # wget --directory-prefix ~/.config/cfw xxx.yaml
-    # cfw设置，打开TUN，混合模式连接到端口，混合模式连接到核心
-    ```
-    <!--TODO:修改安装依赖的指令、检测wget的前缀、添加汉化步骤-->
+    * 安装CFW，并配置
+
+      ``` shell
+      # 安装系统模式依赖
+      paru -S nftables iproute2
+      paru -S clash-for-windows-bin
+
+      # 添加配置文件
+
+      # 汉化
+      wget https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/download/CFW-V0.19.17_CN/app.asar
+      mv /opt/clash-for-windows/resources/app.asar /opt/clash-for-windows/resources/app.asar.bak
+      mv ./app.asar /opt/clash-for-windows-bin/resources/app.asar
+      # cfw设置，打开TUN模式、混合配置、开机启动、动态端口等设置
+      ```
 
   * 获取需要梯子才能获取的应用
+
+    * Python包管理器
+
+      ``` shell
+      # 换源
+      mkdir -p ~/.config/pip
+      echo "[global]" > ~/.config/pip/pip.conf
+      echo "index-url = https://pypi.tuna.tsinghua.edu.cn/simple" >> ~/.config/pip/pip.conf
+      # 下载与安装
+      wget https://bootstrap.pypa.io/get-pip.py
+      python get-pip.py
+      python -m pip install --upgrade pip
+      ```
+
     * 优化zsh体验
 
       ``` shell
@@ -148,8 +158,7 @@
 
     * 其他命令行工具
 
-      <!--TODO-Manjaro: 添加fd、tmux、ranger，配置fzf-->
-      <!--TODO:学习fzf、ranger、nmap-->
+      <!--TODO:学习fzf、ranger、ripgrep、nmap-->
       ``` shell
       # 安装fzf
       git clone --depth 1 https://github.com/junegunn.fzf.git ~/.fzf
@@ -161,8 +170,17 @@
 
 ### IDE
 
-<!--TODO:vscode、code-marketplace-->
 * vscode
+  
+  ``` shell
+  paru -S visual-studio-code code-marketplace
+  # 登录服务需要gnome下的密钥管理系统
+  paru -S gnome-keyring libsecret libgnome-keyring
+  # seahorse可以用来管理密钥
+  paru -S seahorse
+  ```
+
+  * 注：曾碰到过图标主题不完全（一个链接下过来两个主题删了其中一个），之后seahorse不能正常运行的问题。
 
 ### 日常应用
 
@@ -182,9 +200,9 @@
   paru -S vlc
   # 种子下载器
   paru -S aria2 motrix-bin
+  # 据说motrix需要先用sudo权限启动一次
   sudo motrix --no-sandbox
   ```
-  <!--TODO:测试motrix各个版本-->
 
 ## Manjaro美化
 
