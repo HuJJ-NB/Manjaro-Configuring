@@ -58,9 +58,9 @@
   * 添加AUR源：
 
     ``` shell
-    echo "[archlinuxcn]" | sudo tee /etc/pacman.conf
-    echo "SigLevel = Optional TrustedOnly" | sudo tee /etc/pacman.conf
-    echo "Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch" | sudo tee /etc/pacman.conf
+    echo "[archlinuxcn]" | sudo tee -a /etc/pacman.conf
+    echo "SigLevel = Optional TrustedOnly" | sudo tee -a /etc/pacman.conf
+    echo "Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch" | sudo tee -a /etc/pacman.conf
     ```
 
   * 更新软件包
@@ -81,12 +81,17 @@
     ``` shell
     # base-devel将用于安装大部分软件包时的构建工作
     sudo pacman -S paru yay base-devel
+    cp /etc/pacman.conf /etc/pacman.conf.bak
+    cat /etc/pacman.conf | sed 's/#Color/Color/' | sudo tee /etc/pacman.conf
+    cp /etc/paru.conf /etc/paru.conf.bak
+    cat /etc/paru.conf | sed 's/#BottomUp/BottomUp/' | sudo tee /etc/paru.conf
+    # 可选：使用vifm检阅AUR包，需安装vifm，取消/etc/paru.comf中的[bin]、FileManager=vifm两行
     ```
 
   * 获取常用工具
 
     ``` shell
-    paru -S git vim neovim fd lsd bat ranger ripgrep tree wget curl
+    paru -S vim neovim fd lsd bat ranger ripgrep tree
     paru -S clang llvm lldb
     paru -S python
     paru -S screenkey
@@ -112,12 +117,12 @@
       paru -S clash-for-windows-bin
 
       # 添加配置文件
+      # cfw设置，打开TUN模式、混合配置、开机启动、动态端口等设置
 
       # 汉化
       wget https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/download/CFW-V0.19.17_CN/app.asar
       mv /opt/clash-for-windows/resources/app.asar /opt/clash-for-windows/resources/app.asar.bak
       mv ./app.asar /opt/clash-for-windows-bin/resources/app.asar
-      # cfw设置，打开TUN模式、混合配置、开机启动、动态端口等设置
       ```
 
   * 获取需要梯子才能获取的应用
@@ -155,6 +160,7 @@
       # 刷新字体缓存
       fc-cache -fv
       ```
+      <!--配置zsh的过程-->
 
     * 其他命令行工具
 
