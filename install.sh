@@ -29,9 +29,10 @@ paru -S ventoy-bin
 # 使用方式如：sudo ventoyweb
 
 # 一个显卡控制管理工具（省电利器）
-paru - S optimus-manager-qt
+# paru - S optimus-manager-qt 用了就启动不了显卡了
 # 一个强大的录屏工具
 paru -S simplescreenrecoder
+paru -S fcitx5-im fcitx5-chinese-addons fcitx5-material-color
 
 echo "准备科学上网"
 # 安装系统模式依赖

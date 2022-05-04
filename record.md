@@ -95,15 +95,20 @@
     paru -S clang llvm lldb
     paru -S python
     paru -S screenkey
+    paru -S dust # du升级版 查看文件夹下的文件大小
+    paru -S hexyl # 二进制查看
+    paru -S git-delta # diff升级版
+    paru -S duf # df升级版 查看硬盘
     # 一个网络调试工具
     paru -S nmap
     # 磁盘镜像制作工具Ventoy
     paru -S ventoy-bin
     # 使用方式如：sudo ventoyweb
     # 一个显卡控制管理工具（省电利器）
-    paru - S optimus-manager-qt
+    # paru - S optimus-manager-qt
     # 一个强大的录屏工具
     paru -S simplescreenrecoder
+    paru -S fcitx5-im fcitx5-chinese-addons fcitx5-material-color
     ```
 
   * 科学上网
@@ -213,3 +218,5 @@
 ## Manjaro美化
 
 <!--TODO:记录各个主题-->
+
+* plymouth、conky、www.gnome-look.org（grub主题）、rofi
